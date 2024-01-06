@@ -32,12 +32,15 @@ const Home: NextPage = () => {
         <Card style={{marginTop: theme.spacing(4)}}>
           <CardContent style={{ padding: theme.spacing(2)}}>
             <Grid container spacing={2} alignItems='center'>
-              <Grid item xs={12}>
+              <Grid item xs={12} md={2}>
                 <FormGroup>
-                  <Tooltip title='Coming soon' placement='bottom-start'>
-                    <FormControlLabel control={<Switch disabled />} label='On-Chain' />
+                  <Tooltip title='Coming soon'>
+                    <FormControlLabel control={<Switch disabled />} label='On-Chain'/>
                   </Tooltip>
                 </FormGroup>
+              </Grid>
+              {/* Do not disturb flow */}
+              <Grid item xs={12}>
               </Grid>
               <Grid item xs={12} md={2}>
                 <Typography variant='subtitle1' textAlign='center'>Starts With:</Typography>
