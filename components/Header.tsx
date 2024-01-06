@@ -4,7 +4,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const Header = () => {
   return (
-    <AppBar position='sticky'>
+    <AppBar position='sticky' >
       <Toolbar>
         <ConnectButton />
       </Toolbar>

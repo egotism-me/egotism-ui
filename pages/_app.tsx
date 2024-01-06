@@ -43,8 +43,31 @@ const theme = createTheme({
     mode: 'dark',
     primary: {
       main: '#ff6663',
+      contrastText: '#ffffff'
     },
-  }
+    secondary: {
+      main: '#00dd00',
+      contrastText: '#000000'
+    }
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: '12px', // Increase for more rounded corners
+          textTransform: 'none', // Disable all caps
+          fontWeight: 700
+        },
+      },
+    },
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          justifyContent: 'right'
+        }
+      }
+    }
+  },
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
