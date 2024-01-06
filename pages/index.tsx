@@ -4,9 +4,45 @@ import { Box, Button, Card, CardActions, CardContent, Container, Typography, Tex
 import Image from 'next/image';
 import Logo from '../public/images/egotism.svg';
 import { useTheme } from '@mui/material/styles';
+import { useState } from 'react';
+import { wrap } from 'comlink';
+import { MinerWorker } from '../lib/miner.worker';
+
+const isHex = (s: string): boolean => {
+  return /^[0-9A-Fa-f]*$/.test(s);
+}
 
 const Home: NextPage = () => {
   const theme = useTheme();
+
+  const [start, setStart] = useState('');
+  const [end, setEnd] = useState('');
+
+  const isGenerateAvailable = (): true | string => {
+    if (start.length === 0 && end.length === 0) {
+      return 'Fields are empty';
+    }
+    if (!isHex(start) || !isHex(end)) {
+      return 'Fields are not hex';
+    }
+    if (start.length % 2 !== 0 || end.length % 2 !== 0) {
+      return 'Uneven hex strings'
+    }
+
+    return true;
+  }
+
+  const onGenerateClick = async () => {
+    // const minerWorker = new Worker('../lib/miner.worker', { type: 'module' });
+    // const minerWorkerWrapped = wrap<MinerWorker>(minerWorker);
+    // console.log(await minerWorkerWrapped.runMiner());
+    const worker = new Worker(new URL('../lib/miner.worker.ts', import.meta.url));
+    const workerWrapped = wrap<MinerWorker>(worker);
+    console.log('beginning...');
+    console.log(await workerWrapped.runMiner());
+    console.log('done!');
+    // console.log(workerWrapped);
+  }
 
   return (
     <Layout useContainer={false}>
@@ -51,6 +87,8 @@ const Home: NextPage = () => {
                   variant='outlined'
                   fullWidth
                   autoComplete='off'
+                  value={start}
+                  onChange={(e) => isHex(e.target.value) && setStart(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} md={2}>
@@ -62,17 +100,25 @@ const Home: NextPage = () => {
                   variant='outlined'
                   fullWidth
                   autoComplete='off'
+                  value={end}
+                  onChange={(e) => isHex(e.target.value) && setEnd(e.target.value)}
                 />
               </Grid>
             </Grid>
           </CardContent>
           <CardActions>
             <Box width='100%' display='flex' justifyContent='center'>
-              <Button 
-                variant='contained'
-                color='primary'>
-                Generate
-              </Button>
+              <Tooltip title={isGenerateAvailable()} disableHoverListener={isGenerateAvailable() === true}>
+                <span>
+                  <Button 
+                    variant='contained'
+                    color='primary'
+                    disabled={isGenerateAvailable() !== true}
+                    onClick={onGenerateClick}>
+                    Generate
+                  </Button>
+                </span>
+              </Tooltip>
             </Box>
           </CardActions>
         </Card>
