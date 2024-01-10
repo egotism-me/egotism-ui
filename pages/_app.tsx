@@ -10,6 +10,7 @@ import {
 import { publicProvider } from 'wagmi/providers/public';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import Head from 'next/head';
 
 // for some stupid fucking reason anvil chain-id is 31337 and 
 // 
@@ -72,16 +73,22 @@ const theme = createTheme({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider 
-        chains={chains}
-        theme={darkTheme({accentColor: theme.palette.primary.main})}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <>
+      <Head>
+        <title>Egotism</title>
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <WagmiConfig config={wagmiConfig}>
+        <RainbowKitProvider 
+          chains={chains}
+          theme={darkTheme({accentColor: theme.palette.primary.main})}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </>
   );
 }
 
