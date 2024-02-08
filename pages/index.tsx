@@ -97,15 +97,15 @@ const Home: NextPage = () => {
     <Layout useContainer={false}>
       <div style={{ 
         width: '100%', 
-        minHeight: '100vh',
+        minHeight: '400px',
         backgroundColor: theme.palette.secondary.main, 
         textAlign: 'center', 
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
       }}>
-        <Image src={Logo} alt='Logo' />
-        <Image src='/images/egotism_collage_small.png' alt='Name' width={716} height={286} />
+        <Image src={Logo} alt='Logo' width={250} height={250} />
+        <Image src='/images/egotism_collage_small.png' alt='Name' width={358} height={143} />
       </div>
       <Container style={{minHeight: '85vh'}}>
         <Typography variant='h2' fontFamily='ui-serif' textAlign='center' pt={theme.spacing(4)}>
@@ -166,7 +166,7 @@ const Home: NextPage = () => {
                       {generationResult.address}
                     </span> <br/>
                     Private Key:&nbsp;
-                    <span style={{color: theme.palette.text.disabled}}>
+                    <span style={{color: theme.palette.text.disabled, userSelect: 'none'}}>
                       {displayPrivateKey
                         ? generationResult.privateKey 
                         : '•'.repeat(generationResult.privateKey.length)
