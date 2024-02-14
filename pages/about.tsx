@@ -40,10 +40,12 @@ const About: NextPage = () => {
         <Typography variant="body1" paragraph>
           In order to ensure that only the <InlineCode>poster</InlineCode> has access to the vanity address, Egotism uses ECC (Eliptic Curve Cryptography). Whenever a <InlineCode>poster</InlineCode> posts a bounty, they attach a <InlineCode>nonce</InlineCode> value - a point on an elliptic curve - which only they know of its underlying scalar value. Whenever a <InlineCode>miner</InlineCode> fulfills a bounty it means they have found a value that when the <InlineCode>nonce</InlineCode> is multiplied by it, the resulting point is the public key of the vanity address. Then, the poster can salvage the private key by multiplying the underlying scalar of the <InlineCode>nonce</InlineCode> by the value given from the <InlineCode>miner</InlineCode>.
         </Typography>
-        <Box sx={{ position: 'relative', height: 800, marginY: 10}}>
-          <Image fill={true} src={AboutDiagram} alt="How it works diagram" />
+        <Divider /> 
+        <Box sx={{ width: '100%', height: 'auto', maxWidth: '750px', margin: 'auto'}}>
+          <Image layout='responsive' objectFit='contain' src={AboutDiagram} alt='How it works diagram' />
         </Box>
-        <Typography variant='h4' style={{ fontWeight: 'bold' }}>
+        <Divider /> 
+        <Typography variant='h4' style={{ fontWeight: 'bold', marginTop: '32px' }}>
           When Will Egotism be Avialable?
         </Typography>
         <Typography variant="body1" paragraph>
