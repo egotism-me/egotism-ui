@@ -26,6 +26,12 @@ const About: NextPage = () => {
         </Typography>
         <Divider /> 
         <Typography variant='h4' style={{ fontWeight: 'bold', marginTop: '16px' }}>
+          What are Vanity Addresses?
+        </Typography>
+        <Typography variant="body1" paragraph sx={{ mb: 4 }}> 
+          Vanity addresses in blockchain are like custom license plates for your digital wallet, making your crypto address more personal and memorable. Instead of a random string of characters, you can have an address that includes a name or meaningful word. Creating these addresses requires computational since wallet addresses are randomly generated. Think of it as crafting a personalized digital doorstep in the vast world of blockchain, blending security with a touch of personal flair.
+        </Typography>
+        <Typography variant='h4' style={{ fontWeight: 'bold', marginTop: '16px' }}>
           What is Egotism?
         </Typography>
         <Typography variant="body1" paragraph sx={{ mb: 4 }}>
