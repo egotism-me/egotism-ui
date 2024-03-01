@@ -11,6 +11,7 @@ import { publicProvider } from 'wagmi/providers/public';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import Head from 'next/head';
+import { Analytics } from '@vercel/analytics/react';
 
 // for some stupid fucking reason anvil chain-id is 31337 and 
 // 
@@ -85,6 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <Component {...pageProps} />
+            <Analytics />
           </ThemeProvider>
         </RainbowKitProvider>
       </WagmiConfig>

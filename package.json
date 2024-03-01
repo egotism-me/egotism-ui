@@ -14,6 +14,7 @@
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.2",
     "@rainbow-me/rainbowkit": "^1.3.2",
+    "@vercel/analytics": "^1.2.2",
     "comlink": "^4.4.1",
     "ethers": "^6.9.2",
     "keccak": "^3.0.4",
